@@ -9,6 +9,10 @@ from fastapi_pagination import add_pagination
 from fastapi import FastAPI, Request
 from tortoise import Tortoise
 
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+os.chdir(dname)
+
 from routers import parents, children, users, perms, students, courses
 from config.parameters import (
     ALLOWED_HOSTS, 
@@ -23,10 +27,6 @@ from config.parameters import (
     DB_URL
 )
 
-
-abspath = os.path.abspath(__file__)
-dname = os.path.dirname(abspath)
-os.chdir(dname)
 
 app = FastAPI()
 
