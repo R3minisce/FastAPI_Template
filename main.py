@@ -1,4 +1,5 @@
 import uvicorn
+import os
 
 from fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
@@ -22,7 +23,13 @@ from config.parameters import (
     DB_URL
 )
 
+
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+os.chdir(dname)
+
 app = FastAPI()
+
 
 """
 # Database Initialisation
